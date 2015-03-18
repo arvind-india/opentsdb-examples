@@ -3,7 +3,7 @@
 #
 # Variables
 #
-source ./opentsdb.conf
+source ../conf/opentsdb.conf
 
 #
 # Parse cmdline
