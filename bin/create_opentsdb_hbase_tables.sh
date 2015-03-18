@@ -30,7 +30,7 @@ fi
 
 # Validate that node is running the HMaster process
 echo -e "\n#### Checking to see if HBase Master is running on $HBASE_MASTER_HOST"
-if ! ssh $SSH_ARGS $node "ps -ef | grep proc_master | grep -v grep | grep -q proc_master"; then
+if ! ssh $SSH_ARGS $HBASE_MASTER_HOST "ps -ef | grep proc_master | grep -v grep | grep -q proc_master"; then
     echo "ERROR: HBase Master not running on $HBASE_MASTER_HOST"
     exit 1
 fi
