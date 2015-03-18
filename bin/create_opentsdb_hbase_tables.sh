@@ -8,7 +8,7 @@ source ../conf/opentsdb.conf
 #
 # Parse cmdline
 #
-if [ $# -gt 1 ]; then
+if [ $# -ne 1 ]; then
    echo "ERROR: Must supply hostname to install on"
    exit 1
 fi
