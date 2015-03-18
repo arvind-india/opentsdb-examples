@@ -3,7 +3,7 @@
 #
 # Variables
 #
-. ../conf/opentsdb.conf
+. /tmp/opentsdb-examples/conf/opentsdb.conf
 
 #
 # Sanity Checks
