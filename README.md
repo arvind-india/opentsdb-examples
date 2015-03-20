@@ -1,5 +1,5 @@
-OpenTSDB Demo
-============
+OpenTSDB Examples
+=================
 
 Tools for installing, starting, and populating an OpenTSDB cluster on HBase
 
@@ -15,7 +15,7 @@ The tooling will perform the following steps.
 
 Prerequisites
 -------------
-1. Functional HBase 0.98 cluster
+1. Functional HBase cluster 
 
 
 Setup
