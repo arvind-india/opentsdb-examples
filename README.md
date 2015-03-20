@@ -10,8 +10,6 @@ The tooling will perform the following steps.
 3. Install and start the [tcollector processes](http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html)
 4. Install a wrapper around the [tsdb cli](http://opentsdb.net/docs/build/html/user_guide/cli/index.html) to supply arguments from the config
 
-**WARNING: This is intended for POC/sandbox testing, may not be idempotent so DO NOT use on an existing Production cluster!!!**
-
 
 Prerequisites
 -------------
