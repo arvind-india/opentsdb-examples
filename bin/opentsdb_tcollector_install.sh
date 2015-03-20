@@ -50,6 +50,9 @@ for node in $TCOLL_HOST_LIST; do
    ssh $SSH_ARGS $node "sed -i 's|^.*#.*TSD_PORT=.*|TSD_PORT='$TSD_PORT'|g' /etc/init.d/tcollector" || exit 1
    ssh $SSH_ARGS $node "sed -i 's|^.*TCOLLECTOR_PATH=.*|TCOLLECTOR_PATH='$TCOLL_HOME'|g' /etc/init.d/tcollector" || exit 1
 
+   # Set the perms on the init script
+   ssh $SSH_ARGS $node "chmod 775 /etc/init.d/tcollector" || exit 1
+
    # Starting the TSD
    echo -e "\n#### Starting the tcollector on $node"
    ssh $SSH_ARGS $node "service tcollector restart" || exit 1
