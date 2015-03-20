@@ -42,3 +42,8 @@ cd /tmp/opentsdb-examples/ && bash -x bin/opentsdb_tsd_install.sh
 ```
 cd /tmp/opentsdb-examples/ && bash -x bin/opentsdb_tcollector_install.sh
 ```
+
+* Install the TSD cli wrapper
+```
+cd /tmp/opentsdb-examples/ && bash -x bin/opentsdb_cli_install.sh
+```
