@@ -47,3 +47,7 @@ cd /tmp/opentsdb-examples/ && bash -x bin/opentsdb_tcollector_install.sh
 ```
 cd /tmp/opentsdb-examples/ && bash -x bin/opentsdb_cli_install.sh
 ```
+
+Usage
+-----
+The default configuration will start the TSD on port 19990. Open a browser and navigate to the TSD_PORT on the machine where the TSD was installed. Tcollector was already installed and started, so data points should be available. In the metric box, type proc. and validate that a list of metrics is returned. Be sure to modify port forwarding and firewall rules as appropriate to allow access to the TSD web interface.
