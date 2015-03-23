@@ -25,7 +25,7 @@ echo -e "##"
 echo -e "\n#### Downloading the datasets"
 for dataSet in $CRIMES_DATA $WEATHER_DATA; do
   echo "Downloading $dataSet"
-  cd /tmp && wget $dataSet
+  cd /tmp && wget -N $dataSet
   fileName=$(echo $dataSet | awk -F\/ '{print $NF}')
   echo "FILE: $fileName"
   cd /tmp && tar -xvzf $fileName
