@@ -21,11 +21,14 @@ echo -e "\n##"
 echo -e "## Starting sample data load from $(hostname)"
 echo -e "##"
 
-# Validate that HBase is installed
+# Download the data sets
 echo -e "\n#### Downloading the datasets"
 for dataSet in $CRIMES_DATA $WEATHER_DATA; do
   echo "Downloading $dataSet"
   cd /tmp && wget $dataSet
+  fileName=$(echo $dataSet | awk -F\/ '{print $NF}')
+  echo "FILE: $fileName"
+  cd /tmp && tar -xvzf $fileName
 done
 
 exit 0
