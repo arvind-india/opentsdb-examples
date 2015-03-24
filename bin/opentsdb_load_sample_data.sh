@@ -38,7 +38,7 @@ fi
 hdfs dfs -mkdir $SAMPLE_DATA_HDFS_DIR
 
 for dataSet in weather crime; do
-  fileName="${dataSet}_2010_to_present.csv.csv"
+  fileName="${dataSet}_2010_to_present.csv"
   echo "Putting /tmp/$fileName into HDFS"
   hdfs dfs -put /tmp/$fileName $SAMPLE_DATA_HDFS_DIR
 done
