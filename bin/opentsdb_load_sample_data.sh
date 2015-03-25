@@ -36,7 +36,7 @@ for dataSet in weather crime; do
    if hdfs dfs -test -d $SAMPLE_DATA_HDFS_DIR/$dataSet; then
       hdfs dfs -rm -r $SAMPLE_DATA_HDFS_DIR/$dataSet
    fi
-   hdfs dfs -mkdir $SAMPLE_DATA_HDFS_DIR/$dataSet
+   hdfs dfs -mkdir -p $SAMPLE_DATA_HDFS_DIR/$dataSet
 done
 
 for dataSet in weather crime; do
