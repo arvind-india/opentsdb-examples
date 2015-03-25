@@ -31,16 +31,18 @@ for dataSet in $CRIMES_DATA $WEATHER_DATA; do
 done
 
 # Copying the data into HDFS
-echo -e "\n#### Loading sample data into HDFS at $SAMPLE_DATA_HDFS_DIR"
-if hdfs dfs -test -d $SAMPLE_DATA_HDFS_DIR; then
-  hdfs dfs -rm -r $SAMPLE_DATA_HDFS_DIR
-fi
-hdfs dfs -mkdir $SAMPLE_DATA_HDFS_DIR
+for dataSet in weather crime; do
+   echo -e "\n#### Loading sample data into HDFS at $SAMPLE_DATA_HDFS_DIR/$dataSet"
+   if hdfs dfs -test -d $SAMPLE_DATA_HDFS_DIR/$dataSet; then
+      hdfs dfs -rm -r $SAMPLE_DATA_HDFS_DIR/$dataSet
+   fi
+   hdfs dfs -mkdir $SAMPLE_DATA_HDFS_DIR/$dataSet
+done
 
 for dataSet in weather crime; do
   fileName="${dataSet}_2010_to_present.csv"
   echo "Putting /tmp/$fileName into HDFS"
-  hdfs dfs -put /tmp/$fileName $SAMPLE_DATA_HDFS_DIR
+  hdfs dfs -put /tmp/$fileName $SAMPLE_DATA_HDFS_DIR/$dataSet
 done
 
 exit 0
