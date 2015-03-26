@@ -30,19 +30,24 @@ for dataSet in $CRIMES_DATA $WEATHER_DATA; do
   cd /tmp && tar -xvzf $fileName
 done
 
-# Copying the data into HDFS
+# Prepare to copy data
 for dataSet in weather crime; do
-   echo -e "\n#### Loading sample data into HDFS at $SAMPLE_DATA_HDFS_DIR/$dataSet"
+   echo -e "\n#### Creating $SAMPLE_DATA_HDFS_DIR/$dataSet in HDFS"
    if hdfs dfs -test -d $SAMPLE_DATA_HDFS_DIR/$dataSet; then
       hdfs dfs -rm -r $SAMPLE_DATA_HDFS_DIR/$dataSet
    fi
    hdfs dfs -mkdir -p $SAMPLE_DATA_HDFS_DIR/$dataSet
 done
 
+# Copying the data into HDFS
 for dataSet in weather crime; do
   fileName="${dataSet}_2010_to_present.csv"
   echo "Putting /tmp/$fileName into HDFS"
   hdfs dfs -put /tmp/$fileName $SAMPLE_DATA_HDFS_DIR/$dataSet
 done
+
+# Run the MR jobs to produce the opentsdb put output for the crimes data
+
+
 
 exit 0
