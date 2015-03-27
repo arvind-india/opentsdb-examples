@@ -47,7 +47,12 @@ for dataSet in weather crime; do
 done
 
 # Run the MR jobs to produce the opentsdb put output for the crimes data
-
+echo -e "\n#### Running the crimes data processing job"
+chmod 777 $CRIMES_MAPPER $CRIMES_REDUCER
+if hdfs dfs -test -d $CRIMES_HDFS_OUTPUT_DIR; then
+  echo "Cleaning up previous run at $CRIMES_HDFS_OUTPUT_DIR"
+  hdfs dfs -rm -r $CRIMES_HDFS_OUTPUT_DIR
+fi
 
 
 exit 0
