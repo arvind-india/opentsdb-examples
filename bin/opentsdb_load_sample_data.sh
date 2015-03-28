@@ -53,6 +53,10 @@ if hdfs dfs -test -d $CRIMES_HDFS_OUTPUT_DIR; then
   echo "Cleaning up previous run at $CRIMES_HDFS_OUTPUT_DIR"
   hdfs dfs -rm -r $CRIMES_HDFS_OUTPUT_DIR
 fi
-
+echo "Running the Hadoop Streaming job"
+hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -input $SAMPLE_DATA_HDFS_DIR/crime \
+       -output $CRIMES_HDFS_OUTPUT_DIR \
+       -mapper $CRIMES_MAPPER \
+       -reducer $CRIMES_REDUCER
 
 exit 0
