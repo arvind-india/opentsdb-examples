@@ -46,7 +46,7 @@ for dataSet in weather crime; do
   hdfs dfs -put /tmp/$fileName $SAMPLE_DATA_HDFS_DIR/$dataSet
 done
 
-# Run the MR jobs to produce the opentsdb put output for the crimes data
+# Run the MR job to produce the opentsdb put output for the crimes data
 echo -e "\n#### Running the crimes data processing job"
 chmod 777 $CRIMES_MAPPER $CRIMES_REDUCER
 if hdfs dfs -test -d $CRIMES_HDFS_OUTPUT_DIR; then
@@ -58,5 +58,20 @@ hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -input 
        -output $CRIMES_HDFS_OUTPUT_DIR \
        -mapper $CRIMES_MAPPER \
        -reducer $CRIMES_REDUCER
+
+
+# Run the MR job to produce the opentsdb put output for the weather data
+echo -e "\n#### Running the weather data processing job"
+chmod 777 $WEATHER_MAPPER
+if hdfs dfs -test -d $WEATHER_HDFS_OUTPUT_DIR; then
+  echo "Cleaning up previous run at $WEATHER_HDFS_OUTPUT_DIR"
+  hdfs dfs -rm -r $WEATHER_HDFS_OUTPUT_DIR
+fi
+echo "Running the Hadoop Streaming job"
+hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -input $SAMPLE_DATA_HDFS_DIR/weather \
+       -output $WEATHER_HDFS_OUTPUT_DIR \
+       -mapper $WEATHER_MAPPER
+
+
 
 exit 0
