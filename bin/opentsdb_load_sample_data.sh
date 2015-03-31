@@ -72,6 +72,4 @@ hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -input 
        -output $WEATHER_HDFS_OUTPUT_DIR \
        -mapper $WEATHER_MAPPER
 
-
-
 exit 0

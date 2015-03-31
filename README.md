@@ -52,7 +52,7 @@ Data Load
 ---------
 Two sample data sets are stored in S3 for demoing the capabilities of OpenTSDB. The data sets are:
 * [NOAA for daily temps at Chicago ORD: 01/2010 - 03/2015](http://www.ncdc.noaa.gov/cdo-web/search?datasetid=GHCND) - 100MB
-* [City of Chicago Data Portal Crimes: 01/2010 - 03/2015](https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2) - 10KB
+* [City of Chicago Data Portal Crimes: 01/2010 - 03/2015](https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2) - 11KB
 
 Using these data sets, you can easily visualize how the daily temperature in Chicago impacts the number of crimes daily. The data is stored in S3.
 
