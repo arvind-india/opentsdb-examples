@@ -5,6 +5,9 @@ import time
 import datetime
 
 def convert_to_f(temp):
+
+    print >> sys.stderr, temp
+
     try:
        int(temp)
     except ValueError:
