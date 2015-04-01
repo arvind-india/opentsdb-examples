@@ -11,7 +11,7 @@ def convert_to_f(temp):
        return int(0)
 
     temp_float = float("%s.%s" % (temp[0:-1], temp[-1]))
-    return temp_float * 9/5 + 32
+    return int(temp_float * 9/5 + 32)
 
 def main(argv):
     metric = "weather.daily"
