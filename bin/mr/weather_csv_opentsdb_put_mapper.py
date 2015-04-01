@@ -13,7 +13,9 @@ def convert_to_f(temp):
     except ValueError:
        return int(0)
 
-    if len(temp) == 1:
+    if temp.startswith("-") and len(temp) == 1:
+        temp = "-10"
+    elif len(temp) == 1:
        temp = "10"
 
     ''' Handle negative temps '''
