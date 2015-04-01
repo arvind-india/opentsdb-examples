@@ -5,24 +5,13 @@ import time
 import datetime
 
 def convert_to_f(temp):
-
-    print >> sys.stderr, temp
-
     try:
        int(temp)
     except ValueError:
        return int(0)
 
-    if temp.startswith("-") and len(temp) == 1:
-        temp = "-10"
-    elif len(temp) == 1:
-       temp = "10"
-
-    ''' Handle negative temps '''
-    if temp.startswith("-"):
-       return int((160 - (float(temp[1:-1]) * 9)) / 5)
-
-    return int(float(temp[0:-1]) * 9/5 + 32)
+    temp_float = float("%s.%s" % (temp[0:-1], temp[-1]))
+    return temp_float * 9/5 + 32
 
 def main(argv):
     metric = "weather.daily"
