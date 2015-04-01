@@ -12,6 +12,11 @@ def convert_to_f(temp):
 
     if len(temp) == 1:
        temp = "10"
+
+    ''' Handle negative temps '''
+    if temp.startswith("-"):
+       return int((160 - (float(temp[1:-1]) * 9) / 5)
+
     return int(float(temp[0:-1]) * 9/5 + 32)
 
 def main(argv):
