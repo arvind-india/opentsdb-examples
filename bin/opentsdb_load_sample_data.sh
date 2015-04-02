@@ -72,4 +72,21 @@ hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -input 
        -output $WEATHER_HDFS_OUTPUT_DIR \
        -mapper $WEATHER_MAPPER
 
+
+# Load the crimes data
+if ! hdfs dfs -test -e $CRIMES_HDFS_OUTPUT_DIR/part-00000; then
+  echo "ERROR: Could not find MR output for the crimes data set"
+  exit 1
+fi
+hdfs dfs -copyToLocal $CRIMES_HDFS_OUTPUT_DIR/part-00000 $CRIMES_LOCAL_OUTPUT_FILE
+$TSD_HOME/tsdb.cli import $CRIMES_LOCAL_OUTPUT_FILE || exit 1
+
+# Load the weather data
+if ! hdfs dfs -test -e $WEATHER_HDFS_OUTPUT_DIR/part-00000; then
+  echo "ERROR: Could not find MR output for the weather data set"
+  exit 1
+fi
+hdfs dfs -copyToLocal $WEATHER_HDFS_OUTPUT_DIR/part-00000 $WEATHER_LOCAL_OUTPUT_FILE
+$TSD_HOME/tsdb.cli import $WEATHER_LOCAL_OUTPUT_FILE || exit 1
+
 exit 0
